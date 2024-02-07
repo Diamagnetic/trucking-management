@@ -4,10 +4,10 @@ Aadil Shaikh - anshaikh - get2aadil
 2. In past I had a cat 
 3. I usually lie to hide the truth 
 
-Chirag Dhamange - I love cats                                                             (True)
-Kimiya Sawant - I have never fainted in my life                                           (False)
-Rishabh Goyal - I like swimming and gyming and I can swim longest part of pool in one go  (True)
-Rutvik Yamkanmardi - I got my brases stuck when I tried to kiss a person                  (True)
+Chirag Dhamange - I love cats                                                             (Correct)
+Kimiya Sawant - I have never fainted in my life                                           
+Rishabh Goyal - I like swimming and gyming and I can swim longest part of pool in one go  
+Rutvik Yamkanmardi - I got my brases stuck when I tried to kiss a person                  (Correct)
 
 Kimaya Sawant
 
@@ -47,4 +47,16 @@ Chirag Dhamange
 1. I love cat (correct) 
 
 Kimaya Sawant
-1.Never fainted 
+1. Never fainted
+
+
+Chirag Dhamange - cdhamange - Diamagnetic
+
+I love cycling
+I love cats
+I love exercising
+
+Aadil Shaikh: I had a cat in my past
+Kimaya Sawant: I have never fainted in my life
+Rishabh Goyal: I like swimming and gym and I can wim the longest part in one go
+Rutvik Yamkanmardi: I got my braces stuck while kissing
