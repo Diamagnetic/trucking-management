@@ -8,5 +8,5 @@
 
 # Design Documents for HAUlLog 
 
-All the design documents have been collected and placed in the following folder 
+All the design documents have been collected and placed in the following folder : 
 [Design Document Folder](https://drive.google.com/drive/folders/1G-FJPj1zGzwTZVRH8w1TRd7mE3sglRPE?usp=drive_link)
