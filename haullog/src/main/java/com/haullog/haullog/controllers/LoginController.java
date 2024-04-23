@@ -22,7 +22,7 @@ public class LoginController {
         String username = loginRequest.getUsername();
         String password = loginRequest.getPassword();
 
-        User user = userRepository.findByUsername(username);
+        User user = userRepository.findByEmail(username);
         
         if (user != null && BCrypt.checkpw(password, user.getPassword())) {
             return ResponseEntity.ok("Login successful");
