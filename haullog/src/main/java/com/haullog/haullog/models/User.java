@@ -5,21 +5,24 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "users")
 public class User {
-	@Id()
-	private long Id;
-	
-	private String email;
+	@Id
+	@Column(name="email")
+	private String username;
 
+	@Column(name="password")
 	private String password;
 	
+	public User() {
+		
+	}
 
-	public User(String email, String password) {
-		this.email = email;
+	public User(String username, String password) {
+		this.username = username;
 		this.password = password;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getUsername() {
+		return username;
 	}
 	
 	public String getPassword() {
