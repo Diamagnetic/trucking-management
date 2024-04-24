@@ -35,4 +35,13 @@ public class LoginController {
         		})
         		.orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "User not found"));
     }
+	
+	@PostMapping("/signup")
+	public ResponseEntity<String> signUp(@RequestBody User newUser) {
+		if(userService.createNewUser(newUser)) {
+			return ResponseEntity.ok("User created successfully");
+		} else {
+			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error occurred during user creation");
+		}
+    }
 }
