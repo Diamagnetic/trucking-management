@@ -1,11 +1,7 @@
 package com.haullog.haullog.controllers;
 
-import java.util.List;
-import java.util.Optional;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,11 +17,6 @@ public class LoginController {
 	
 	public LoginController(UserService userService) {
 		this.userService = userService;
-	}
-	
-	@GetMapping("/login")
-	public List<User> getAllUsers() {
-		return userService.getAllUsers();
 	}
 	
 	@PostMapping("/login")
