@@ -11,11 +11,11 @@ import com.haullog.haullog.models.User;
 import com.haullog.haullog.service.UserService;
 
 @RestController
-public class LoginController {
+public class LoginSignUpController {
 	
 	private final UserService userService;
 	
-	public LoginController(UserService userService) {
+	public LoginSignUpController(UserService userService) {
 		this.userService = userService;
 	}
 	
@@ -39,9 +39,11 @@ public class LoginController {
 	@PostMapping("/signup")
 	public ResponseEntity<String> signUp(@RequestBody User newUser) {
 		if(userService.createNewUser(newUser)) {
+			System.out.println("User " + newUser.getFirstName() + ", " + newUser.getLastName() + " from company " + newUser.getCompanyName() + " created");
 			return ResponseEntity.ok("User created successfully");
 		} else {
-			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error occurred during user creation");
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Error occurred during user creation");
 		}
     }
 }

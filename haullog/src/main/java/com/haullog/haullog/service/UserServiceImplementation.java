@@ -1,7 +1,6 @@
 package com.haullog.haullog.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.haullog.haullog.repository.UserRepository;
@@ -11,7 +10,6 @@ import java.util.Optional;
 
 @Service
 public class UserServiceImplementation implements UserService {
-	
 
 	@Autowired
     private final UserRepository userRepository;
@@ -27,14 +25,12 @@ public class UserServiceImplementation implements UserService {
 	
 	@Override
 	public boolean createNewUser(User newUser) {
-		try {
-			User user = userRepository.save(newUser);
-			
-			return true;
-		} catch(DataIntegrityViolationException e) {
-			e.printStackTrace();
-			
-			return false;
-		}
+		if (userRepository.existsById(newUser.getUsername())) {
+            return false;
+        }
+		
+		userRepository.save(newUser);
+		
+		return true;
 	}
 }
