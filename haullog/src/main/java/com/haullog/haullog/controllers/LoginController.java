@@ -5,17 +5,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
 
 import com.haullog.haullog.models.User;
 import com.haullog.haullog.service.UserService;
 
 @RestController
-public class LoginSignUpController {
+public class LoginController {
 	
 	private final UserService userService;
 	
-	public LoginSignUpController(UserService userService) {
+	public LoginController(UserService userService) {
 		this.userService = userService;
 	}
 	
@@ -38,14 +37,4 @@ public class LoginSignUpController {
         	            .body("User not found"));
     }
 	
-	@PostMapping("/signup")
-	public ResponseEntity<String> signUp(@RequestBody User newUser) {
-		if(userService.createNewUser(newUser)) {
-			System.out.println("User " + newUser.getFirstName() + ", " + newUser.getLastName() + " from company " + newUser.getCompanyName() + " created");
-			return ResponseEntity.ok("User created successfully");
-		} else {
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Error occurred during user creation");
-		}
-    }
 }

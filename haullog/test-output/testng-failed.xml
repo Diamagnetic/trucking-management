@@ -7,6 +7,8 @@
         <methods>
           <include name="setUp"/>
           <include name="testSignUpSuccess"/>
+          <include name="testLoginWrongPassword"/>
+          <include name="tearDown"/>
         </methods>
       </class> <!-- com.haullog.haullog.controllers.LoginSignUpControllerTests -->
     </classes>

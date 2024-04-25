@@ -26,6 +26,7 @@ public class UserServiceImplementation implements UserService {
 	@Override
 	public boolean createNewUser(User newUser) {
 		if (userRepository.existsById(newUser.getUsername())) {
+			System.out.println(newUser.getUsername() + " exists");
             return false;
         }
 		
