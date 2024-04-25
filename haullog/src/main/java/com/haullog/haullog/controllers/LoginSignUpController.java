@@ -30,10 +30,12 @@ public class LoginSignUpController {
         				System.out.println(searchedUser.getUsername() + " logged in");
         				return ResponseEntity.ok("Login successful");
         			} else {
-        				throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid username or password");
+        				return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+        	                    .body("Invalid username or password");
         			}
         		})
-        		.orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "User not found"));
+        		.orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+        	            .body("User not found"));
     }
 	
 	@PostMapping("/signup")
