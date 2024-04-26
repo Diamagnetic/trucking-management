@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="6" passed="6" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2024-04-25T15:04:02 GMT-07:00" name="Default suite" finished-at="2024-04-25T15:04:04 GMT-07:00" duration-ms="1943">
+    <groups>
+    </groups>
+    <test started-at="2024-04-25T15:04:02 GMT-07:00" name="Default test" finished-at="2024-04-25T15:04:04 GMT-07:00" duration-ms="1943">
+      <class name="com.haullog.haullog.HaUlLogApplicationTests">
+        <test-method signature="contextLoads()[pri:0, instance:com.haullog.haullog.HaUlLogApplicationTests@1e287667]" started-at="2024-04-25T15:04:02 GMT-07:00" name="contextLoads" finished-at="2024-04-25T15:04:02 GMT-07:00" duration-ms="66" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- contextLoads -->
+      </class> <!-- com.haullog.haullog.HaUlLogApplicationTests -->
+      <class name="com.haullog.haullog.controllers.SignUpControllerTests">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.haullog.haullog.controllers.SignUpControllerTests@5a12c728]" started-at="2024-04-25T15:04:02 GMT-07:00" name="setUp" finished-at="2024-04-25T15:04:04 GMT-07:00" duration-ms="1649" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="testSignUpSuccess()[pri:0, instance:com.haullog.haullog.controllers.SignUpControllerTests@5a12c728]" started-at="2024-04-25T15:04:04 GMT-07:00" name="testSignUpSuccess" finished-at="2024-04-25T15:04:04 GMT-07:00" duration-ms="99" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testSignUpSuccess -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.haullog.haullog.controllers.SignUpControllerTests@5a12c728]" started-at="2024-04-25T15:04:04 GMT-07:00" name="setUp" finished-at="2024-04-25T15:04:04 GMT-07:00" duration-ms="5" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="testSignUpUserAlreadyExists()[pri:0, instance:com.haullog.haullog.controllers.SignUpControllerTests@5a12c728]" started-at="2024-04-25T15:04:04 GMT-07:00" name="testSignUpUserAlreadyExists" finished-at="2024-04-25T15:04:04 GMT-07:00" duration-ms="3" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testSignUpUserAlreadyExists -->
+      </class> <!-- com.haullog.haullog.controllers.SignUpControllerTests -->
+      <class name="com.haullog.haullog.controllers.LoginControllerTests">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.haullog.haullog.controllers.LoginControllerTests@4a67318f]" started-at="2024-04-25T15:04:04 GMT-07:00" name="setUp" finished-at="2024-04-25T15:04:04 GMT-07:00" duration-ms="3" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="testLoginSuccess()[pri:0, instance:com.haullog.haullog.controllers.LoginControllerTests@4a67318f]" started-at="2024-04-25T15:04:04 GMT-07:00" name="testLoginSuccess" finished-at="2024-04-25T15:04:04 GMT-07:00" duration-ms="3" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testLoginSuccess -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.haullog.haullog.controllers.LoginControllerTests@4a67318f]" started-at="2024-04-25T15:04:04 GMT-07:00" name="setUp" finished-at="2024-04-25T15:04:04 GMT-07:00" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="testLoginUserNotFound()[pri:0, instance:com.haullog.haullog.controllers.LoginControllerTests@4a67318f]" started-at="2024-04-25T15:04:04 GMT-07:00" name="testLoginUserNotFound" finished-at="2024-04-25T15:04:04 GMT-07:00" duration-ms="3" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testLoginUserNotFound -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.haullog.haullog.controllers.LoginControllerTests@4a67318f]" started-at="2024-04-25T15:04:04 GMT-07:00" name="setUp" finished-at="2024-04-25T15:04:04 GMT-07:00" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="testLoginWrongPassword()[pri:0, instance:com.haullog.haullog.controllers.LoginControllerTests@4a67318f]" started-at="2024-04-25T15:04:04 GMT-07:00" name="testLoginWrongPassword" finished-at="2024-04-25T15:04:04 GMT-07:00" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testLoginWrongPassword -->
+      </class> <!-- com.haullog.haullog.controllers.LoginControllerTests -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
