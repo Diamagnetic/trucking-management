@@ -13,11 +13,11 @@ CREATE TYPE "Status_Shipment" AS ENUM (
   'Payment Pending'
 );
 
-CREATE TYPE "Employee_type" AS ENUM (
-  'Manager',
-  'Driver',
-  'Admin'
-);
+-- CREATE TYPE "Employee_type" AS ENUM (
+--   'Manager',
+--   'Driver',
+--   'Admin'
+-- );
 
 CREATE TABLE "Trucks" (
   "truck_id" number PRIMARY KEY,
@@ -30,16 +30,16 @@ CREATE TABLE "Trucks" (
 
 CREATE TABLE "Shipments" (
   "shipment_id" number PRIMARY KEY,
-  "customer_id" number,
-  "driver_id" number,
-  "truck_id" number,
+  -- "customer_id" number,
+  -- "driver_id" number,
+  "truck_id" number FOREIGN KEY,
   "shipment_cost" number,
   "shipment_date" date,
-  "shipment_created" date,
+  -- "shipment_created" date,
   "shipment_status" Status_Shipment,
   "shipment_source" string,
   "shipment_dest" string,
-  "creator_id" number
+  -- "creator_id" number
 );
 
 CREATE TABLE "Expenses" (
@@ -49,23 +49,23 @@ CREATE TABLE "Expenses" (
   "truck_id" number
 );
 
-CREATE TABLE "Customers" (
-  "customer_id" number PRIMARY KEY,
-  "customer_name" string,
-  "customer_company" string,
-  "customer_phone" string,
-  "customer_mail" string,
-  "customer_address" string
-);
+-- CREATE TABLE "Customers" (
+--   "customer_id" number PRIMARY KEY,
+--   "customer_name" string,
+--   "customer_company" string,
+--   "customer_phone" string,
+--   "customer_mail" string,
+--   "customer_address" string
+-- );
 
-CREATE TABLE "Employees" (
-  "employee_id" number PRIMARY KEY,
-  "first_name" string,
-  "last_name" string,
-  "approval_status" bool,
-  "supervisor_id" number,
-  "employee_type" Employee_type
-);
+-- CREATE TABLE "Employees" (
+--   "employee_id" number PRIMARY KEY,
+--   "first_name" string,
+--   "last_name" string,
+--   "approval_status" bool,
+--   "supervisor_id" number,
+--   "employee_type" Employee_type
+-- );
 
 ALTER TABLE "Shipments" ADD FOREIGN KEY ("truck_id") REFERENCES "Trucks" ("truck_id");
 
