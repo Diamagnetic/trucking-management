@@ -1,3 +1,24 @@
+-- Table: public.users
+
+-- DROP TABLE public.users;
+
+CREATE TABLE IF NOT EXISTS public.users
+(
+    email text COLLATE pg_catalog."default" NOT NULL,
+    password text COLLATE pg_catalog."default" NOT NULL,
+    first_name text COLLATE pg_catalog."default",
+    last_name text COLLATE pg_catalog."default",
+    company_name text COLLATE pg_catalog."default",
+    CONSTRAINT user_pkey PRIMARY KEY (email)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.users
+    OWNER to postgres;
+
+INSERT INTO users VALUES('admin@email.com', 'admin123');
+
 CREATE TYPE "Truck_Activity" AS ENUM (
   'Active',
   'Inactive',
