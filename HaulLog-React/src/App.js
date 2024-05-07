@@ -6,6 +6,7 @@ import Login from './screens/login'; // Adjust the path to import Login componen
 import Signup from './screens/signup'; // Adjust the path to import Signup component
 import LandingPage from './screens/landing_page'; // Import the LandingPage component
 import InvoicePage from './screens/invoice_page'; // Import the InvoicePage component
+import LoginLandingPage from './screens/shipments_page';
 import './App.css';
 
 const App = () => {
@@ -13,11 +14,11 @@ const App = () => {
     <Router>
       <div className="App">
         <Routes>
-          <Route exact path="/" element={<LandingPage />} /> {/* Define route for LandingPage */}
+          <Route exact path="/" element={<LandingPage />} /> 
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/signup" element={<Signup />} />
-          <Route exact path="/invoice" element={<InvoicePage />} /> {/* Define route for InvoicePage */}
-          {/* Add more routes here if needed */}
+          <Route exact path="/invoice" element={<InvoicePage />} />
+          <Route exact path="/landing" element={<LoginLandingPage/>} />
         </Routes>
       </div>
     </Router>
