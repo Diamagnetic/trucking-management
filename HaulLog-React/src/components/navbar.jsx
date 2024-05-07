@@ -10,8 +10,7 @@ const NavigationBar = () => {
     <div className="navbar">
       <img src={logo} alt="Logo" className="logo" />
       <div className="nav-links">
-        {/* Replace Blog and Contact with Shipment ID and Generate Reports */}
-        <Link to="/shipment" className="nav-item">Shipment ID</Link>
+        <Link to="/landing" className="nav-item">Shipment ID</Link>
         <span className="nav-item">&nbsp;</span>
         <Link to="/reports" className="nav-item">Generate Reports</Link>
       </div>
