@@ -8,34 +8,6 @@ import jakarta.persistence.*;
 @Table(name = "shipments")
 public class Shipments {
 	
-	private enum ShipmentStatus {
-		Delivered("Delivered"),
-		InTransit("In Transit"),
-		Pending("Pending"),
-		Incomplete("Incomplete"),
-		PaymentPending("Payment Pending"),
-		None("None");
-		
-		private final String displayName;
-
-		ShipmentStatus(String displayName) {
-	        this.displayName = displayName;
-	    }
-
-	    public String getDisplayName() {
-	        return displayName;
-	    }
-	    
-	    public ShipmentStatus setDisplayName(String shipmentStatus) {
-	    	for (ShipmentStatus s : ShipmentStatus.values()) {
-	    		if(s.getDisplayName() == shipmentStatus)
-	    			return s;
-	    	}
-	    	
-	    	return ShipmentStatus.None;
-	    }
-	}
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="shipment_id")
@@ -54,10 +26,7 @@ public class Shipments {
 	private long shipmentCost;
 	
 	@Column(name="shipment_status")
-	private ShipmentStatus shipmentStatus;
-	
-	@Column(name="shipment_created")
-	private LocalDate shipmentCreatedDate;
+	private String shipmentStatus;
 	
 	@Column(name="shipment_source")
 	private String shipmentSource;
@@ -67,21 +36,26 @@ public class Shipments {
 	
 	@Column(name="creator_id")
 	private long creatorId;
-	
+
+	@Column(name="shipment_date")
+	private LocalDate shipmentCreatedDate;
+
 	public Shipments() {
-		
+
 	}
 	
-	public Shipments(long customerId, long driverId, long truckId, long shipmentCost,
-			String shipmentStatus, String shipmentSource, String shipmentDestination, long creatorId) {
+	public Shipments(long shipmentId, long customerId, long driverId, long truckId, long shipmentCost,
+			String shipmentStatus, String shipmentSource, String shipmentDestination, long creatorId, LocalDate shipmentCreatedDate) {
+		this.shipmentId = shipmentId;
 		this.customerId = customerId;
 		this.driverId = driverId;
 		this.truckId = truckId;
 		this.shipmentCost = shipmentCost;
-		this.shipmentStatus.setDisplayName(shipmentStatus);
+		this.shipmentStatus = shipmentStatus;
 		this.shipmentSource = shipmentSource;
 		this.shipmentDestination = shipmentDestination;
 		this.creatorId = creatorId;
+		this.shipmentCreatedDate = shipmentCreatedDate;
 	}
 	
 	public long getShipmentId() {
@@ -92,63 +66,36 @@ public class Shipments {
 		return customerId;
 	}
 
-	public void setCustomerId(long customerId) {
-		this.customerId = customerId;
-	}
-
 	public long getDriverId() {
 		return driverId;
-	}
-
-	public void setDriverId(long driverId) {
-		this.driverId = driverId;
 	}
 
 	public long getTruckId() {
 		return truckId;
 	}
 
-	public void setTruckId(long truckId) {
-		this.truckId = truckId;
-	}
-
 	public long getShipmentCost() {
 		return shipmentCost;
 	}
-
-	public void setShipmentCost(long shipmentCost) {
-		this.shipmentCost = shipmentCost;
-	}
-
-	public ShipmentStatus getShipmentStatus() {
+	
+	public String getShipmentStatus() {
 		return shipmentStatus;
-	}
-
-	public void setShipmentStatus(ShipmentStatus shipmentStatus) {
-		this.shipmentStatus = shipmentStatus;
 	}
 
 	public String getShipmentSource() {
 		return shipmentSource;
 	}
-
-	public void setShipmentSource(String shipmentSource) {
-		this.shipmentSource = shipmentSource;
-	}
-
+	
 	public String getShipmentDestination() {
 		return shipmentDestination;
 	}
-
-	public void setShipmentDestination(String shipmentDestination) {
-		this.shipmentDestination = shipmentDestination;
+	
+	public LocalDate getShipmentCreatedDate() {
+		return shipmentCreatedDate;
 	}
 
 	public long getCreatorId() {
 		return creatorId;
 	}
 
-	public void setCreatorId(long creatorId) {
-		this.creatorId = creatorId;
-	}
 }

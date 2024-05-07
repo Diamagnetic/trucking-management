@@ -1,7 +1,10 @@
 package com.haullog.haullog.controllers;
 
+import java.time.YearMonth;
 import java.util.ArrayList;
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +16,8 @@ import com.haullog.haullog.service.ShipmentsService;
 
 @RestController
 public class ShipmentsController {
+	
+	@Autowired
 	private final ShipmentsService shipmentsService;
 	
 	public ShipmentsController(ShipmentsService shipmentsService) {
@@ -20,11 +25,22 @@ public class ShipmentsController {
 	}
 	
 	@GetMapping("/getShipmentsByDate/{month}/{year}")
-	public ResponseEntity<ArrayList<Shipments>> getShipmentsByDate(@PathVariable("month") int month, @PathVariable("year") int year) {
-		if(month >= 1 && month <= 12) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ArrayList<Shipments> ());
+	public ResponseEntity<List<Shipments>> getShipmentsByDate(@PathVariable("month") int month, @PathVariable("year") int year) {
+		
+		List<Shipments> shipments = new ArrayList<> ();
+		
+		if(month >= 1 && month <= 12 && year <= YearMonth.now().getYear()) {
+			
+			if(YearMonth.of(year, month).isBefore(YearMonth.now())) {
+				shipments = shipmentsService.getShipmentsByMonthYear(month, year);
+				
+				return ResponseEntity.ok(shipments); 
+			}
+			
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(shipments);
 		}
-		ArrayList<Shipments> shipments = shipmentsService.getShipmentsByMonthYear(month, year);
-		return ResponseEntity.ok(shipments);
+		
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+				.body(shipments);
 	}
 }
