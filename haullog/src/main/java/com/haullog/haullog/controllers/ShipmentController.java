@@ -11,23 +11,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.haullog.haullog.models.Shipments;
+import com.haullog.haullog.models.Shipment;
 import com.haullog.haullog.service.ShipmentsService;
 
 @RestController
-public class ShipmentsController {
+public class ShipmentController {
 	
 	@Autowired
 	private final ShipmentsService shipmentsService;
 	
-	public ShipmentsController(ShipmentsService shipmentsService) {
+	public ShipmentController(ShipmentsService shipmentsService) {
 		this.shipmentsService = shipmentsService;
 	}
 	
 	@GetMapping("/getShipmentsByDate/{month}/{year}")
-	public ResponseEntity<List<Shipments>> getShipmentsByDate(@PathVariable("month") int month, @PathVariable("year") int year) {
+	public ResponseEntity<List<Shipment>> getShipmentsByDate(@PathVariable("month") int month, @PathVariable("year") int year) {
 		
-		List<Shipments> shipments = new ArrayList<> ();
+		List<Shipment> shipments = new ArrayList<> ();
 		
 		if(month >= 1 && month <= 12 && year <= YearMonth.now().getYear()) {
 			

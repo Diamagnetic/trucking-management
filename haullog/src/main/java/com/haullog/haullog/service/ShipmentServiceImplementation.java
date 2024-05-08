@@ -8,27 +8,27 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.haullog.haullog.models.Shipments;
-import com.haullog.haullog.repository.ShipmentsRepository;
+import com.haullog.haullog.models.Shipment;
+import com.haullog.haullog.repository.ShipmentRepository;
 
 @Service
-public class ShipmentsServiceImplementation implements ShipmentsService{
+public class ShipmentServiceImplementation implements ShipmentsService{
 	
 	@Autowired
-    private final ShipmentsRepository shipmentsRepository;
+    private final ShipmentRepository shipmentRepository;
 	
-	public ShipmentsServiceImplementation(ShipmentsRepository shipmentsRepository) {
-		this.shipmentsRepository = shipmentsRepository;
+	public ShipmentServiceImplementation(ShipmentRepository shipmentRepository) {
+		this.shipmentRepository = shipmentRepository;
 	}
 	
 	@Override
-	public List<Shipments> getShipmentsByMonthYear(int month, int year) {
+	public List<Shipment> getShipmentsByMonthYear(int month, int year) {
 
-		Optional<List<Shipments>> optionalShipments =  shipmentsRepository.findShipmentsByMonthAndYear(month, year);
+		Optional<List<Shipment>> optionalShipments =  shipmentRepository.findShipmentsByMonthAndYear(month, year);
 		
 		if(optionalShipments.isPresent()) {
-			List<Shipments> shipments = optionalShipments.get().stream()
-				    .map(shipment -> new Shipments(
+			List<Shipment> shipments = optionalShipments.get().stream()
+				    .map(shipment -> new Shipment(
 				    		shipment.getShipmentId(),
 				            shipment.getCustomerId(), 
 				            shipment.getDriverId(), 

@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "shipments")
-public class Shipments {
+public class Shipment {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -40,11 +40,11 @@ public class Shipments {
 	@Column(name="shipment_date")
 	private LocalDate shipmentCreatedDate;
 
-	public Shipments() {
+	public Shipment() {
 
 	}
 	
-	public Shipments(long shipmentId, long customerId, long driverId, long truckId, long shipmentCost,
+	public Shipment(long shipmentId, long customerId, long driverId, long truckId, long shipmentCost,
 			String shipmentStatus, String shipmentSource, String shipmentDestination, long creatorId, LocalDate shipmentCreatedDate) {
 		this.shipmentId = shipmentId;
 		this.customerId = customerId;

@@ -3,12 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.haullog.haullog.services.ShipmentsServiceImplementation">
+      <class name="com.haullog.haullog.services.UserServiceImplementationTests">
         <methods>
-          <include name="testShipmentsDataRetrieval"/>
+          <include name="getUserByUserNameTest"/>
           <include name="setUp"/>
         </methods>
-      </class> <!-- com.haullog.haullog.services.ShipmentsServiceImplementation -->
+      </class> <!-- com.haullog.haullog.services.UserServiceImplementationTests -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
