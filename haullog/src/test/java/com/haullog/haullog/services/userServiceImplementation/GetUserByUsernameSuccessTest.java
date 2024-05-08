@@ -3,6 +3,8 @@ package com.haullog.haullog.services.userServiceImplementation;
 import static org.mockito.Mockito.when;
 import static org.testng.Assert.assertEquals;
 
+import java.util.Optional;
+
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -16,7 +18,7 @@ import com.haullog.haullog.repository.UserRepository;
 import com.haullog.haullog.service.UserServiceImplementation;
 
 @SpringBootTest
-public class GetUserByUsernameFailure {
+public class GetUserByUsernameSuccessTest {
 
 	@Mock
 	@Autowired
@@ -35,12 +37,11 @@ public class GetUserByUsernameFailure {
 	}
 	
 	@Test
-	public void createNewUserFailure() {
-		when(userRepository.existsById("abc@email.com")).thenReturn(true);
+	public void getUserByUserNameSuccess() {
+		when(userRepository.findById("abc@email.com")).thenReturn(Optional.of(user));
 		
-		boolean result = userServiceImplementation.createNewUser(user);
+		Optional<User> result = userServiceImplementation.getUserByUsername("abc@email.com");
 		
-		assertEquals(result, false);
+		assertEquals(result.get().getUsername(), "abc@email.com");
 	}
-
 }

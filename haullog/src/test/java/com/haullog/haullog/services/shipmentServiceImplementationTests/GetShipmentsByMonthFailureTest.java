@@ -19,7 +19,7 @@ import com.haullog.haullog.repository.ShipmentRepository;
 import com.haullog.haullog.service.ShipmentServiceImplementation;
 
 @SpringBootTest
-public class GetShipmentsByMonthFailure {
+public class GetShipmentsByMonthFailureTest {
 	
 	@Mock
 	@Autowired
