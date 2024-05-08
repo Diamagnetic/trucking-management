@@ -43,7 +43,7 @@ public class ExpenseController {
     }
 
     @GetMapping("/truck/{truckId}")
-    public ResponseEntity<Object> getExpensesForTruck(@PathVariable long truckId) {
+    public ResponseEntity<List<Expense>> getExpensesForTruck(@PathVariable long truckId) {
     	
         List<Expense> expenses = expenseService.getExpensesForTruck(truckId);
         

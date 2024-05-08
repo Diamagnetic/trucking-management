@@ -1,18 +1,14 @@
-package com.haullog.haullog.controllers.expenseControllerTests.addExpenseControllerTests;
+package com.haullog.haullog.controllers.expenseControllerTests.getExpenseByEmployeeIdTests;
 
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.testng.Assert.assertEquals;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
@@ -25,8 +21,7 @@ import com.haullog.haullog.models.Expense;
 import com.haullog.haullog.service.ExpenseService;
 
 @SpringBootTest
-public class AddExpenseControllerSuccessTest {
-	
+public class GetExpenseByEmployeeIdTests {
 	@Mock
 	private ExpenseService expenseService;
 	
@@ -37,19 +32,20 @@ public class AddExpenseControllerSuccessTest {
     public void setUp() {
     	MockitoAnnotations.openMocks(this);
     }
-    
-    @Test
-    public void testAddExpenseControllerSuccess() {
-    	
-    	Expense expenseFromBody = new Expense(10, 101, 10000, "Diesel refuel");
-    	
+	
+	@Test
+    public void testGetExpensesForEmployee() {
     	Expense expense = new Expense(4, 101, 101, 10, 10000, LocalDate.of(2000, 1, 1), "Diesel refuel");
     	
-    	when(expenseService.addExpense(Mockito.any(Expense.class))).thenReturn(expense);
+    	List<Expense> expenses = new ArrayList<> ();
     	
-    	ResponseEntity<Object> response = expenseController.addExpense(expenseFromBody);
+    	expenses.add(expense);
+    	
+    	when(expenseService.getExpensesForEmployee(101)).thenReturn(expenses);
+    	
+    	ResponseEntity<List<Expense>> response = expenseController.getExpensesForEmployee(101);
     	
     	assertEquals(response.getStatusCode(), HttpStatus.OK);
-    	assertEquals(response.getBody().toString(), "{expenseId=" + expense.getExpenseId() + "}");
+    	assertEquals(response.getBody().size(), 1);
     }
 }

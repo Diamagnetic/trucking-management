@@ -3,12 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.haullog.haullog.controllers.expenseControllerTests.addExpenseControllerTests.AddExpenseControllerSuccessTest">
+      <class name="com.haullog.haullog.services.expenseServiceImplementationTests.AddExpenseTest">
         <methods>
-          <include name="testAddExpenseControllerSuccess"/>
           <include name="setUp"/>
+          <include name="testAddExpenseControllerSuccess"/>
         </methods>
-      </class> <!-- com.haullog.haullog.controllers.expenseControllerTests.addExpenseControllerTests.AddExpenseControllerSuccessTest -->
+      </class> <!-- com.haullog.haullog.services.expenseServiceImplementationTests.AddExpenseTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
