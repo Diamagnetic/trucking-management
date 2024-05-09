@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { AuthProvider } from './AuthContext';
 import Login from './screens/login'; // Adjust the path to import Login component
 import Signup from './screens/signup'; // Adjust the path to import Signup component
 import LandingPage from './screens/landing_page'; // Import the LandingPage component
@@ -12,6 +13,7 @@ import './App.css';
 const App = () => {
   return (
     <Router>
+      <AuthProvider>
       <div className="App">
         <Routes>
           <Route exact path="/" element={<LandingPage />} /> 
@@ -21,6 +23,7 @@ const App = () => {
           <Route exact path="/landing" element={<LoginLandingPage/>} />
         </Routes>
       </div>
+      </AuthProvider>
     </Router>
   );
 };
