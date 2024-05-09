@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.haullog.haullog.models.User;
 import com.haullog.haullog.service.UserService;
@@ -17,7 +18,8 @@ public class LoginController {
 	public LoginController(UserService userService) {
 		this.userService = userService;
 	}
-	
+
+	@CrossOrigin
 	@PostMapping("/login")
 	public ResponseEntity<String> login(@RequestBody User user) {
         String username = user.getUsername();
