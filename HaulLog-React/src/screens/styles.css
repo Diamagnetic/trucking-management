@@ -71,7 +71,7 @@ body::before {
     background-color: blue;
   }
 
-  input[type="text"],
+input[type="text"],
 input[type="password"],
 input[type="email"] {
   width: calc(100% - 20px);
@@ -85,7 +85,7 @@ input[type="email"] {
     background-color: #2699FB;
     height: 75px; /* Set the height of the navigation bar */
     display: flex;
-    justify-content: center; /* Center the content horizontally */
+    justify-content: space-between; /* Center the content horizontally */
     align-items: center; /* Center the content vertically */
   }
   
@@ -100,6 +100,9 @@ input[type="email"] {
     background-color: #1d7ebf; /* Change background color on hover */
   }
 
+  .logo-link a{
+    padding: 5px 5px;
+  }
   .logo {
     width: 85px; /* Adjust the width of the logo */
     height: auto; /* Maintain aspect ratio */
@@ -152,5 +155,13 @@ input[type="email"] {
     margin-right: 0; /* Remove margin between login and signup links */
   }
   
+  .login-landing-container {
+    display: block;
+    width: 80%;
+    height: 100rem;
+    margin-left: 20%;
+    padding: 0;
+    box-sizing: border-box;
+  }
   
   
