@@ -6,9 +6,10 @@ import './components.css';
 
 function CalendarComponent({shipmentDates, onMonthChange}) {
     
-
+    console.log("Shipment", shipmentDates);
     const tileClassName = ({date,view}) => {
         // Check for shipment Dates
+        
         if(view === 'month' && shipmentDates.some(
             d => new Date(d).toDateString() === date.toDateString()
         )) {
@@ -21,7 +22,7 @@ function CalendarComponent({shipmentDates, onMonthChange}) {
             <Calendar 
             onChange={onMonthChange} 
             onActiveStartDateChange={({activeStartDate, view}) => view === 'month' && onMonthChange(activeStartDate)}
-            tileClassName={{tileClassName}} />
+            tileClassName={tileClassName} />
         </div>
     );
 }

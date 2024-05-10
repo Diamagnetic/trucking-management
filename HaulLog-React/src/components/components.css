@@ -127,3 +127,7 @@ button {
     background: #6f48eb;
     color: white;
    }
+.react-calendar .highlight {
+    background-color: #ffd700; /* Example: gold background */
+    color: white; /* white text */
+}

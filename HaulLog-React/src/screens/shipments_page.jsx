@@ -14,11 +14,21 @@ function LoginLandingPage() {
             const month = activeDate.getMonth() + 1;
             const year = activeDate.getFullYear();
             console.log("URL :" + apiURL + '/getShipmentsByDate/' + month.toString()+'/' + year.toString())
-            const response = await fetch(apiURL + '/getShipmentsByDate/' + month.toString()+'/' + year.toString());
-            const data = await response.json();
-            console.log(data);
-            setShipmentDates(data.map(item => item.date));
-        }
+            try {
+                const response = await fetch(apiURL + '/getShipmentsByDate/' + month.toString()+'/' + year.toString());
+                if (response.ok) {
+                    const data = await response.json();
+                    // console.log(data[0].shipmentCreatedDate);
+                    const dates = data.map(item => new Date(item.shipmentCreatedDate));
+                    console.log(dates);
+                    setShipmentDates(dates);
+                } else {
+                    throw new Error('Failed to fetch shipments');
+                }
+            } catch (error) {
+                console.error('Error fetching shipments:', error);
+            }
+        };
 
         fetchShipments();
     }, [activeDate]);
