@@ -1,7 +1,9 @@
 import React from "react";
+import './styles.css';
 import NavigationBar from '../components/navbar';
 import CalendarComponent from '../components/CalendarComponent';
-import './styles.css';
+
+
 function LoginLandingPage() {
     return (
         <div>

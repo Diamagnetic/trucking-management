@@ -12,6 +12,7 @@ const Signup = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [errors, setErrors] = useState({});
   const navigate = useNavigate(); // Initialize useNavigate
+  const apiURL = `http://${window.location.hostname}:8080`;
 
   const handleSignup = async () => {
     let newErrors = {};
@@ -45,7 +46,7 @@ const Signup = () => {
 
     if (Object.keys(newErrors).length === 0) {
       try {
-        const response = await fetch('http://localhost:8080/signup', {
+        const response = await fetch(apiURL + '/signup', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

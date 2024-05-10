@@ -44,9 +44,6 @@ button {
 /* React Calendar */      
 
 .react-calendar { 
-    width: 99%;
-    height: 100%;
-    margin-left: 1%;
     background-color: #fff;
     color: #222;
     border-radius: 8px;

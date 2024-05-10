@@ -9,7 +9,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});
   const [errorMessage, setErrorMessage] = useState('');
-  const apiURL = `http://${window.location.hostname}:8080/login`;
+  const apiURL = `http://${window.location.hostname}:8080`;
   const { login } = useAuth();
   const navigate = useNavigate();
 
@@ -27,7 +27,7 @@ const Login = () => {
 
     if (Object.keys(newErrors).length === 0) {
       try {
-        const response = await fetch(apiURL, {
+        const response = await fetch(apiURL + '/login', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -59,7 +59,7 @@ const Login = () => {
         <h2 style={{ color: '#2E0C6A', fontWeight: 'bold' }}>LOGIN</h2>
         <input
           type="text"
-          placeholder="User ID"
+          placeholder="Email ID"
           value={userId}
           onChange={(e) => setUserId(e.target.value)}
         />
