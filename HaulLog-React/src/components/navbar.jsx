@@ -11,11 +11,11 @@ const NavigationBar = () => {
 
   // Check to make sure user is logged in before showing Shipments and Generate Reports
   const { isLoggedIn, logout } = useAuth();
-  const history = useNavigate();
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     logout();
-    history.push('/');
+    navigate("/");
   }
 
   return (
@@ -44,7 +44,7 @@ const NavigationBar = () => {
             <Link to="/signup" className="nav-item">Signup</Link>
             </>
           ) : (
-            <button onClick={handleLogout}>Logout</button>
+            <Link onClick={handleLogout} className='nav-item'>Logout</Link>
           )
         }
         

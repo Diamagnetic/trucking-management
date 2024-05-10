@@ -21,9 +21,13 @@ export const useAuth = () => {
 
     const { isLoggedIn, setIsLoggedIn } = context;
 
+    const login = () => {
+        setIsLoggedIn(true);
+    }
+
     const logout = () => {
         setIsLoggedIn(false);
     };
 
-    return { isLoggedIn, setIsLoggedIn, logout};
+    return { isLoggedIn, setIsLoggedIn, login, logout};
 }

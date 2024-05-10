@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
 import NavigationBar from '../components/navbar';
+import { useAuth } from '../AuthContext';
 import './styles.css';
 
 const Login = () => {
@@ -8,6 +9,9 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});
   const [errorMessage, setErrorMessage] = useState('');
+  const apiURL = `http://${window.location.hostname}:8080/login`;
+  const { login } = useAuth();
+  const navigate = useNavigate();
 
   const handleLogin = async () => {
     let newErrors = {};
@@ -23,21 +27,23 @@ const Login = () => {
 
     if (Object.keys(newErrors).length === 0) {
       try {
-        const response = await fetch('http://localhost:8080/login', {
+        const response = await fetch(apiURL, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ username: userId, password }),
+          body: JSON.stringify({ username: userId, password: password }),
         });
 
         if (response.ok) {
           console.log('Login successful');
-          // Redirect user or perform other actions upon successful login
+          login();
+          navigate('/landing');
+          
         } else {
           const errorData = await response.json();
           console.error('Login failed:', errorData);
-          setErrorMessage(errorData); // Set error message to display to the user
+          setErrorMessage(errorData.errorMessage); // Set error message to display to the user
         }
       } catch (error) {
         console.error('Error during login:', error);
