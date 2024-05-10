@@ -37,19 +37,51 @@ button {
   
     .nav-item:last-child {
         margin-right:0; /* Add 0.3cm gap between Contact and the right edge of the screen */
-      }  
+      }
+      
+      .input-container {
+        margin-bottom: 15px;
+      }
+      
+      /* Ensure all input fields have the same width */
+      .input-container input {
+        width: 100%;
+      }
+
+      .navbar button:hover {
+        background-color: rgb(47, 37, 165);
+      }
+      
+      
+      
+      
+      
+            
 
 
 
 /* React Calendar */      
 
 .react-calendar { 
+
+    /* position: absolute; */
+    top: 50px; /* Set the top position to start after the navbar */
+    left: 0;
+    right: 0;
+    width : 15cm;
+    height: 10cm;
+    bottom: 10px; /* Set the bottom position to leave a 10px gap from the bottom of the page */
+
+
     background-color: #fff;
     color: #222;
     border-radius: 8px;
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.125em;
+    z-index: 1; /* Ensure the calendar appears above other content */
+
+
    }
    .react-calendar__navigation button {
     color: #6f48eb;
