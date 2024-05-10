@@ -60,7 +60,7 @@ body::before {
     width: calc(100% - 20px);
     padding: 10px;
     background-color: lightblue;
-    color: white;
+    /* color: white; */
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -71,7 +71,7 @@ body::before {
     background-color: blue;
   }
 
-  input[type="text"],
+input[type="text"],
 input[type="password"],
 input[type="email"] {
   width: calc(100% - 20px);
@@ -80,43 +80,6 @@ input[type="email"] {
   border: 1px solid #ccc;
   border-radius: 5px;
 }
-
-.navbar {
-    background-color: #2699FB;
-    height: 75px; /* Set the height of the navigation bar */
-    display: flex;
-    justify-content: center; /* Center the content horizontally */
-    align-items: center; /* Center the content vertically */
-  }
-  
-  /* Optional: style for navigation links */
-  .navbar a {
-    color: white;
-    text-decoration: none;
-    padding: 10px 20px; /* Add padding to the links */
-  }
-  
-  .navbar a:hover {
-    background-color: #1d7ebf; /* Change background color on hover */
-  }
-
-  .logo {
-    width: 85px; /* Adjust the width of the logo */
-    height: auto; /* Maintain aspect ratio */
-    margin-right: auto; /* Push logo to the left corner */
-  }
-
-  .nav-item {
-    margin-right: px; /* Adjust spacing between items */
-    color: white; /* Set text color to white */
-    font-weight: bold; /* Set font weight to bold */
-  }
-  
-    .nav-item:last-child {
-        margin-right:0; /* Add 0.3cm gap between Contact and the right edge of the screen */
-      }  
-
-      /* styles.css */
 
 /* Login container */
 /* Login container */
@@ -152,5 +115,15 @@ input[type="email"] {
     margin-right: 0; /* Remove margin between login and signup links */
   }
   
+  .login-landing-container {
+    display: flex;
+    margin-top: 5%;
+    margin-left: 40%;
+    height: 50rem;
+    width: 150rem;
+    align-items: center;
+    padding: 100;
+    box-sizing: border-box;
+  }
   
   

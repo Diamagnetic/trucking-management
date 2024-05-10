@@ -1,13 +1,13 @@
 package com.haullog.haullog;
 
-import org.testng.annotations.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.testng.annotations.Test;
 
-@SpringBootTest
-class HaUlLogApplicationTests {
+@SpringBootTest(classes = HaUlLogApplication.class)
+public class HaUlLogApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
-
+    @Test
+    public void contextLoads() {
+    	
+    }
 }

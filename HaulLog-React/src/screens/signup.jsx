@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import NavigationBar from '../components/navbar'; // Import the NavigationBar component
 import './styles.css';
 
@@ -7,13 +7,14 @@ const Signup = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
-  const [userId, setUserId] = useState('');
+  const [companyName, setCompanyName] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [companyName, setCompanyName] = useState('');
   const [errors, setErrors] = useState({});
+  const navigate = useNavigate(); // Initialize useNavigate
+  const apiURL = `http://${window.location.hostname}:8080`;
 
-  const handleSignup = () => {
+  const handleSignup = async () => {
     let newErrors = {};
 
     if (!firstName.trim()) {
@@ -27,8 +28,8 @@ const Signup = () => {
     } else if (!email.match(/^[^@]+@\w+(\.\w+)+\w$/)) {
       newErrors.email = "Please enter a valid email address.";
     }
-    if (!userId.trim()) {
-      newErrors.userId = "User ID is required.";
+    if (!companyName.trim()) {
+      newErrors.companyName = "Company name is required.";
     }
     if (!password.trim()) {
       newErrors.password = "Password is required.";
@@ -40,15 +41,47 @@ const Signup = () => {
     } else if (password !== confirmPassword) {
       newErrors.confirmPassword = "Passwords do not match.";
     }
-    if (!companyName.trim()) {
-      newErrors.companyName = "Company name is required.";
-    }
 
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {
-      console.log('Signing up with:', firstName, lastName, email, userId, password, confirmPassword, companyName);
-      // Proceed with additional signup logic here
+      try {
+        const response = await fetch(apiURL + '/signup', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            username: email,
+            password: password,
+            firstName: firstName,
+            lastName: lastName,
+            companyName: companyName,
+          }),
+        });
+
+        if (response.ok) {
+          console.log('User successfully signed up!');
+          alert('User successfully signed up!'); // Display success message
+          navigate('/login'); // Redirect to the login page using navigate
+        } else {
+          console.error('Error signing up:', response.statusText);
+          // Handle error (e.g., display error message)
+        }
+      } catch (error) {
+        console.error('Error signing up:', error);
+      
+        if (error instanceof TypeError) {
+          console.error('Network error. Please try again later.');
+          // Handle network errors (e.g., display error message to user)
+        } else if (error instanceof SyntaxError) {
+          console.error('Error parsing JSON response.');
+          // Handle JSON parsing errors (e.g., display error message to user)
+        } else {
+          console.error('Unexpected error:', error.message);
+          // Handle other types of errors (e.g., display generic error message to user)
+        }
+      }
     }
   };
 
@@ -80,11 +113,11 @@ const Signup = () => {
         {errors.email && <p className="error" style={{ color: 'red' }}>{errors.email}</p>}
         <input
           type="text"
-          placeholder="User ID"
-          value={userId}
-          onChange={(e) => setUserId(e.target.value)}
+          placeholder="Company Name"
+          value={companyName}
+          onChange={(e) => setCompanyName(e.target.value)}
         />
-        {errors.userId && <p className="error" style={{ color: 'red' }}>{errors.userId}</p>}
+        {errors.companyName && <p className="error" style={{ color: 'red' }}>{errors.companyName}</p>}
         <input
           type="password"
           placeholder="Password"
@@ -99,13 +132,6 @@ const Signup = () => {
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
         {errors.confirmPassword && <p className="error" style={{ color: 'red' }}>{errors.confirmPassword}</p>}
-        <input
-          type="text"
-          placeholder="Company Name"
-          value={companyName}
-          onChange={(e) => setCompanyName(e.target.value)}
-        />
-        {errors.companyName && <p className="error" style={{ color: 'red' }}>{errors.companyName}</p>}
         <button onClick={handleSignup}>Signup</button>
         <p style={{ color: 'black' }}>
           Already a Member? <Link to="/login">Login</Link> here!

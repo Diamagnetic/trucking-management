@@ -1,3 +1,56 @@
+-- Table: public.users
+
+-- DROP TABLE public.users;
+
+CREATE TABLE IF NOT EXISTS public.users
+(
+    email text COLLATE pg_catalog."default" NOT NULL,
+    password text COLLATE pg_catalog."default" NOT NULL,
+    first_name text COLLATE pg_catalog."default",
+    last_name text COLLATE pg_catalog."default",
+    company_name text COLLATE pg_catalog."default",
+    CONSTRAINT user_pkey PRIMARY KEY (email)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.users
+    OWNER to postgres;
+
+INSERT INTO users VALUES('admin@email.com', 'admin123');
+
+-- Table: public.shipments
+
+-- DROP TABLE public.shipments;
+
+CREATE TABLE IF NOT EXISTS public.shipments
+(
+    shipment_id bigint NOT NULL,
+    customer_id bigint,
+    truck_id bigint,
+    shipment_date date DEFAULT CURRENT_DATE,
+    creator_id bigint DEFAULT 1,
+    driver_id bigint,
+    shipment_cost bigint,
+    shipment_source character varying(30) COLLATE pg_catalog."default",
+    shipment_destination character varying(30) COLLATE pg_catalog."default",
+    shipment_status status_shipment,
+    CONSTRAINT shipments_pkey PRIMARY KEY (shipment_id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.shipments
+    OWNER to postgres;
+
+INSERT INTO SHIPMENTS (shipment_id, customer_id, driver_id, truck_id, shipment_cost, shipment_status, shipment_source, shipment_destination, creator_id, shipment_date)
+VALUES 
+(1, 101, 201, 301, 500, 'Pending', 'A', 'B', 1, '2023-12-15'),
+(2, 102, 202, 302, 600, 'Delivered', 'B', 'C', 1, '2024-01-20'),
+(3, 103, 203, 303, 700, 'In Transit', 'C', 'D', 1, '2024-02-10'),
+(4, 104, 204, 304, 800, 'Pending', 'D', 'E', 1, '2024-04-15'),
+(5, 105, 205, 305, 900, 'Pending', 'E', 'F', 1, '2024-05-20');
+
 CREATE TYPE "Truck_Activity" AS ENUM (
   'Active',
   'Inactive',
@@ -13,72 +66,16 @@ CREATE TYPE "Status_Shipment" AS ENUM (
   'Payment Pending'
 );
 
-CREATE TYPE "Employee_type" AS ENUM (
-  'Manager',
-  'Driver',
-  'Admin'
-);
+CREATE TABLE TRUCKS (
+"truck_id" BIGINT PRIMARY KEY,
+"truck_brand" VARCHAR(10) NOT NULL,
+"truck_model" VARCHAR(10) NOT NULL,
+"truck_load" INT NOT NULL,
+"purchase_date" DATE,
+"activity_status" TRUCK_ACTIVITY);
 
-CREATE TABLE "Trucks" (
-  "truck_id" number PRIMARY KEY,
-  "truck_brand" string NOT NULL,
-  "truck_model" string NOT NULL,
-  "truck_load" number,
-  "purchase_date" date,
-  "activity_status" Truck_Activity
-);
-
-CREATE TABLE "Shipments" (
-  "shipment_id" number PRIMARY KEY,
-  "customer_id" number,
-  "driver_id" number,
-  "truck_id" number,
-  "shipment_cost" number,
-  "shipment_date" date,
-  "shipment_created" date,
-  "shipment_status" Status_Shipment,
-  "shipment_source" string,
-  "shipment_dest" string,
-  "creator_id" number
-);
-
-CREATE TABLE "Expenses" (
-  "expense_id" number PRIMARY KEY,
-  "reporter_id" number,
-  "employee_id" number,
-  "truck_id" number
-);
-
-CREATE TABLE "Customers" (
-  "customer_id" number PRIMARY KEY,
-  "customer_name" string,
-  "customer_company" string,
-  "customer_phone" string,
-  "customer_mail" string,
-  "customer_address" string
-);
-
-CREATE TABLE "Employees" (
-  "employee_id" number PRIMARY KEY,
-  "first_name" string,
-  "last_name" string,
-  "approval_status" bool,
-  "supervisor_id" number,
-  "employee_type" Employee_type
-);
-
-ALTER TABLE "Shipments" ADD FOREIGN KEY ("truck_id") REFERENCES "Trucks" ("truck_id");
-
-ALTER TABLE "Expenses" ADD FOREIGN KEY ("truck_id") REFERENCES "Trucks" ("truck_id");
-
-ALTER TABLE "Shipments" ADD FOREIGN KEY ("customer_id") REFERENCES "Customers" ("customer_id");
-
-ALTER TABLE "Shipments" ADD FOREIGN KEY ("driver_id") REFERENCES "Employees" ("employee_id");
-
-ALTER TABLE "Shipments" ADD FOREIGN KEY ("creator_id") REFERENCES "Employees" ("employee_id");
-
-ALTER TABLE "Expenses" ADD FOREIGN KEY ("employee_id") REFERENCES "Employees" ("employee_id");
-
-ALTER TABLE "Expenses" ADD FOREIGN KEY ("reporter_id") REFERENCES "Employees" ("employee_id");
-
-ALTER TABLE "Employees" ADD FOREIGN KEY ("employee_id") REFERENCES "Employees" ("supervisor_id");
+CREATE TABLE EXPENSES (
+EXPENSE_ID BIGINT PRIMARY KEY,
+REPORTER_ID BIGINT,
+EMPLOYEE_ID BIGINT,
+TRUCK_ID BIGINT);
