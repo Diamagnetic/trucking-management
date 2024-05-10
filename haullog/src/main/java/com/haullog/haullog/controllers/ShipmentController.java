@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.haullog.haullog.models.Shipment;
 import com.haullog.haullog.service.ShipmentsService;
@@ -24,6 +25,7 @@ public class ShipmentController {
 		this.shipmentsService = shipmentsService;
 	}
 	
+	@CrossOrigin
 	@GetMapping("/getShipmentsByDate/{month}/{year}")
 	public ResponseEntity<List<Shipment>> getShipmentsByDate(@PathVariable("month") int month, @PathVariable("year") int year) {
 		

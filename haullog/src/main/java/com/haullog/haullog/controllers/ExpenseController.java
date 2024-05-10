@@ -1,6 +1,6 @@
 package com.haullog.haullog.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+// import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +22,7 @@ public class ExpenseController {
         this.expenseService = expenseService;
     }
 
+    @CrossOrigin
     @PostMapping("/add")
     public ResponseEntity<Object> addExpense(@RequestBody Expense expense) {
 
@@ -35,6 +36,7 @@ public class ExpenseController {
         return ResponseEntity.ok(response);
     }
 
+    @CrossOrigin
     @GetMapping("/driver/{employeeId}")
     public ResponseEntity<List<Expense>> getExpensesForEmployee(@PathVariable long employeeId) {
     	List<Expense> expenses = expenseService.getExpensesForEmployee(employeeId);
@@ -42,6 +44,7 @@ public class ExpenseController {
         return ResponseEntity.ok(expenses);
     }
 
+    @CrossOrigin
     @GetMapping("/truck/{truckId}")
     public ResponseEntity<List<Expense>> getExpensesForTruck(@PathVariable long truckId) {
     	
